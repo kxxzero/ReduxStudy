@@ -1,12 +1,13 @@
-import {Fragment, useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {fetchFindList Dispatch} from "../../actions/foodActions";
+import {Fragment,useState,useEffect} from "react";
+import {useSelector,useDispatch} from "react-redux";
+import {fetchFindList,fetchFindPage} from "../../actions/foodActions";
+import {Link} from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 function FoodFind(){
-    const[fd]=useState('마포')
-    const[curpage, setCurpage]useState(1)
+    const [fd,setFd]=useState('마포')
+    const [curpage,setCurpage]=useState(1)
     const dispatch=useDispatch()
-
     /*
         React : 일반 화면 출력 => html 역할
 
@@ -16,9 +17,9 @@ function FoodFind(){
      */
 
     useEffect(() => {
-        dispatch(fetchFindList(curpage,fd)) // action에 구현된 함수 호출
+        dispatch(fetchFindList(curpage,fd)) // action에 구현된 함수
         dispatch(fetchFindPage(fd))
-    }, [fd, curpage]);
+    }, [fd,curpage]);
     
     // store 안에 저장된 데이터를 가져옴
     const find_list=useSelector((state)=>state.foods.find_list)
@@ -48,8 +49,8 @@ function FoodFind(){
     return (
         <Fragment>
             <div className={"row"}>
-                <input type={"text"} size={"20"} className={"input-sm"} onChange={findChange}/>
-                <input type={"button"} value={"검색"} className={"btn-danger btn-primary"}/>
+                <input type={"text"} size={"20"} className={"input-sm"} onChange={findChange} value={fd}/>
+                <input type={"button"} value={"검색"} className={"btn-sm btn-primary"}/>
             </div>
             <div style={{"height": "10px"}}></div>
             <div className={"row"}>

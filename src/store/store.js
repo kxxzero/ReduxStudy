@@ -1,7 +1,6 @@
 import {configureStore} from "@testing-library/react";
 import thunk from 'redux-thunk' // 미들웨어 / 비동기 방식
 import {rootReducer} from "../reducers/index";
-import {create} from "axios";
 import {createLogger} from "redux-logger/src";
 
 const logger=createLogger()
