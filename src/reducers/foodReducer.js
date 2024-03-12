@@ -1,12 +1,13 @@
 import {
-    FETCH_FOOD_LIST,
     FETCH_FOOD_DETAIL,
+    FETCH_FOOD_LIST,
     FETCH_PAGE,
-    FETCH_RECIPE_LIST,
     FETCH_RECIPE_PAGE,
+    FETCH_RECIPE_COUNT,
     FETCH_RECIPE_DETAIL,
-    FETCH_RECIPE_MAKES,
+    FETCH_RECIPE_LIST,
     FETCH_RECIPE_POSTERS,
+    FETCH_RECIPE_MAKES,
     FETCH_FIND_LIST,
     FETCH_FIND_PAGE
 } from "../actions/types";
@@ -27,7 +28,7 @@ const initialState={
     recipe_total:0,
     recipe_count:0,
     recipe_detail:{},
-    recipe_images:[],
+    recipe_posters:[],
     recipe_makes:[],
     find_list:[],
     find_page:0
@@ -35,6 +36,7 @@ const initialState={
 
 
 // state = initialState => 모든 데이터가 state에 저장되어 있음
+// dispatch(action) => {type,data(payload)}
 export default function(state=initialState,action) {
     console.log("reducer function call... action()"+action)
 
@@ -52,7 +54,7 @@ export default function(state=initialState,action) {
                  */
             }
         case FETCH_FOOD_DETAIL:
-            return{
+            return {
                 ...state,
                 food_detail: action.payload
             }
@@ -64,24 +66,19 @@ export default function(state=initialState,action) {
         case FETCH_RECIPE_LIST:
             return {
                 ...state,
-                recipe_list:action.payload
+                recipe_list: action.payload
             }
         case FETCH_RECIPE_COUNT:
-            return{
+            return {
                 ...state,
-                recipe_count: action.payload
+                recipe_count:action.payload
             }
         case FETCH_RECIPE_PAGE:
-            return{
+            return {
                 ...state,
                 recipe_total: action.payload
             }
         case FETCH_RECIPE_DETAIL:
-            return{
-                ...state,
-                recipe_detail: action.payload
-            }
-        case FETCH_RECIPE_POSTERS:
             return {
                 ...state,
                 recipe_detail: action.payload
@@ -89,19 +86,23 @@ export default function(state=initialState,action) {
         case FETCH_RECIPE_MAKES:
             return {
                 ...state,
-                recipe_detail: action.payload
+                recipe_makes: action.payload
+            }
+        case FETCH_RECIPE_POSTERS:
+            return {
+                ...state,
+                recipe_posters: action.payload
             }
         case FETCH_FIND_LIST:
-            return{
+            return {
                 ...state,
-                find_list: action.payload
+                find_list:action.payload
             }
         case FETCH_FIND_PAGE:
-            return{
+            return {
                 ...state,
-                find_page:action.payload
+                find_page: action.payload
             }
-
         default:
             return state
     }

@@ -22,8 +22,8 @@ function Home(){
     const html=food_list.map((food)=>
         <div className="col-md-4">
             <div className="thumbnail">
-                <Link to={"/food/food_detail/" + food.fno}>
-                    <img src={'http://www.menupan.com' + food.poster} style={{"width": "100%"}}/>
+                <Link to={"/food/food_detail/"+food.fno}>
+                    <img src={'http://www.menupan.com'+food.poster}  style={{"width":"100%"}}/>
                     <div className="caption">
                         <p>{food.name}</p>
                     </div>
@@ -36,7 +36,7 @@ function Home(){
             <div className={"row"}>
                 {html}
             </div>
-            <div style={{"height": "20px"}}>
+            <div style={{"height":"20px"}}>
                 <div className={"text-center"}>
                     <Pagination
                         activePage={curpage}
